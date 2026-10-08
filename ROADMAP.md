@@ -42,7 +42,7 @@ format plus PPTX), scriptable by agents (CLI, JSON control channel, MCP), and av
   x64/x86 msi + zip, Linux AppImage/deb/rpm/tar.gz + Flatpak, FreeBSD tar.gz, web zip); signing
   secrets live in the `release` environment. Version: `cargo xtask version`.
 
-**Next (in order):** first signed release run · PPTX corpus hardening against real-world decks ·
+**Next (in order):** PPTX corpus hardening against real-world decks ·
 Animation Pane and presenter view polish · vector PDF artwork · Format Shape pane depth (3-D,
 picture/texture options) · edit points · native macOS menu bar · print · Notes/Handout masters ·
 equations · SVG pictures · WMA/WMV decoding.
@@ -60,7 +60,7 @@ Claude Opus 5.5 agent** (about 12–18 hours with three agents in parallel).
 
 | Alpha blocker | State | Estimate |
 |---|---|---|
-| First real release run: signing, notarization, installers verified on each OS | Workflows written and linted, never run | 6 h |
+| First real release run: signing, notarization, installers verified on each OS | Done for macOS + Windows signing: v0.1.0 published (all platforms built); installers still to be hand-checked on each OS | 2 h |
 | PPTX fidelity on a corpus of real decks (import, round-trip, opens without repair) | Verified on generated decks only | 8 h |
 | Presenter view and Animation Pane polish (timeline, reorder, preview) | Working, rough | 6 h |
 | Soak and fuzz the editor (random command sequences, big decks, undo/redo) for crashes and slowness | Unit tests and guards only | 5 h |

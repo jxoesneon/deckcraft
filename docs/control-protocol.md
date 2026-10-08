@@ -21,7 +21,7 @@ Coordinates are slide points (1/72 inch; a 16:9 slide is 960 × 540) unless note
 | `ui.key` / `ui.text` | `{key, shift?, alt?, cmd?}` / `{text}` | Keyboard input (also drives a running slide show) |
 | `ui.move` / `ui.click` / `ui.drag` | screen points | Real egui pointer input — reaches every widget, menu and pane |
 | `ui.set` | `{tab?, view?, pane?, notes?, zoom?, brightness?, ruler?, gridlines?, guides?, …}` | UI state (returns the full state) |
-| `ui.dialog.open` / `ui.dialog.close` | `{id, fields?}` | Open or close a dialog by id |
+| `ui.dialog.open` / `ui.dialog.close` | `{id, fields?}` | Open or close a dialog by id; `fields` pre-fills its fields (About: `{"tab": "contributors"}` or `"models"`) |
 | `ui.screenshot` | `{path?}` | PNG of the whole window (base64 when no path) |
 | `ui.render` | `{path?, slide?, scale?}` | Render a slide headlessly |
 | `ui.resize` / `ui.focus` | | Window control |

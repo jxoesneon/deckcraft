@@ -8,6 +8,7 @@
 
 pub mod canvas;
 pub mod control;
+pub mod credits;
 pub mod dialogs;
 pub mod fillui;
 pub mod icons;

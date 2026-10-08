@@ -693,7 +693,24 @@ fn body(app: &mut SlideApp, ui: &mut Ui, d: &mut Dialog) -> bool {
             ok || cancel
         }
         "about" => {
-            about(app, ui);
+            let tab = d.get("tab", "about");
+            ui.horizontal(|ui| {
+                for (k, l) in [("about", "About"), ("contributors", "Contributors"), ("models", "Models")] {
+                    if ui.selectable_label(tab == k, l).clicked() {
+                        d.fields.insert("tab".into(), k.into());
+                    }
+                }
+            });
+            ui.separator();
+            match tab.as_str() {
+                "contributors" | "models" => {
+                    // The credits need room for the table; the About tab keeps its compact size.
+                    ui.set_min_size(vec2(640.0, 380.0));
+                    ui.set_max_height(380.0);
+                    if tab == "models" { crate::credits::models_ui(ui) } else { crate::credits::contributors_ui(ui) }
+                }
+                _ => about(app, ui),
+            }
             let (ok, _) = buttons(ui, "Close");
             ok
         }

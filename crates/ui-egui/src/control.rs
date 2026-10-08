@@ -232,7 +232,14 @@ pub fn handle(app: &mut SlideApp, ctx: &egui::Context, req: &ControlRequest) -> 
         }
         "ui.dialog.open" => {
             let Some(id) = s("id") else { return err("missing `id`") };
-            app.dialog = Some(crate::dialogs::Dialog::new(id));
+            let mut d = crate::dialogs::Dialog::new(id);
+            if let Some(fields) = p.get("fields").and_then(Value::as_object) {
+                for (k, v) in fields {
+                    let v = v.as_str().map_or_else(|| v.to_string(), str::to_string);
+                    d.fields.insert(k.clone(), v);
+                }
+            }
+            app.dialog = Some(d);
             ok(Value::Null)
         }
         "ui.screenshot" => Outcome::Screenshot { path: s("path").map(String::from) },
