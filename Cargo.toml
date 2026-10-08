@@ -42,6 +42,7 @@ kurbo = { version = "0.13", features = ["serde"] }
 thiserror = "2"
 serde = { version = "1", features = ["derive", "rc"] }
 serde_json = { version = "1", features = ["float_roundtrip"] }
+tracing = "0.1"
 log = "0.4"
 proptest = "1"
 rayon = "1"
