@@ -3,9 +3,17 @@ name = "deckcraft-ui-martensite"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "Sovereign retained-mode slide presentation user interface for DeckCraft powered by Martensite"
+description = "Sovereign retained-mode, GPU-accelerated graphical user interface for DeckCraft powered by Martensite"
+
+[lints]
+workspace = true
 
 [dependencies]
+deckcraft-engine = { workspace = true }
+deckcraft-model = { workspace = true }
+deckcraft-geom = { workspace = true }
+deckcraft-color = { workspace = true }
+
 serde = { workspace = true, features = ["derive"] }
 serde_json.workspace = true
 tracing.workspace = true

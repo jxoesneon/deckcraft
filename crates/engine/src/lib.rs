@@ -53,6 +53,41 @@ impl From<deckcraft_model::ModelError> for EngineError {
 
 pub type Result<T> = std::result::Result<T, EngineError>;
 
+/// The application engine: presentations, commands, history and tool state.
+/// Named `Engine` so UIs (egui, Martensite, headless) refer to one type.
+pub type Engine = Session;
+
+/// Toolbox tool identity, in ribbon order. UI-agnostic so every front-end shares the
+/// canonical list; each UI maps it to its own presentation. Pointer gestures themselves
+/// resolve to [`tools::ToolKind`]; `Tool` is the app-level tool selection a UI tracks.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum Tool {
+    /// The pointer: pick, move, resize and rotate shapes.
+    Select,
+    /// Insert or edit a text box.
+    TextBox,
+    /// Insert a preset shape (the active preset is tool state).
+    Shape,
+    /// Insert or crop a picture.
+    Image,
+    /// Insert or edit a table.
+    Table,
+    /// Ink: pen and highlighter annotations, on the canvas or during a show.
+    Ink,
+    /// Erase ink strokes.
+    Eraser,
+    /// Edit the slide's speaker notes.
+    Notes,
+    /// Pan the canvas (spring-loaded while Space is held).
+    Hand,
+    /// Zoom the canvas (spring-loaded while Z is held).
+    Zoom,
+    /// Run the slide show.
+    Present,
+    /// The slide sorter / strip: move between slides.
+    Navigator,
+}
+
 /// Text being edited in place: a shape's body (or a table cell, or the slide's notes).
 #[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
