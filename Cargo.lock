@@ -1135,6 +1135,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "deckcraft-ui-martensite"
+version = "0.1.0"
+dependencies = [
+ "proptest",
+ "serde",
+ "serde_json",
+ "tracing",
+]
+
+[[package]]
 name = "deckcraft-vp9"
 version = "0.1.0"
 dependencies = [
